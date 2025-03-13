@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Kosaras Webshop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+          </li>
+  
+          <li class="nav-item dropdown" ngbDropdown>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle role="button">
+              Kategóriák
+            </a>
+            <ul class="dropdown-menu" ngbDropdownMenu>
+              <li *ngFor="let component of komponensek">
+                <a class="dropdown-item" [routerLink]="[component.link]">
+                  {{ component.nev }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div *ngIf="!user" class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary me-md-2 bi bi-person-circle" routerLink="login"></button>
+        </div>
+        <div *ngIf="user" class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary me-md-2 bi bi-person-circle" (click)="logout()">Kijelentkezés</button>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary me-md-2 bi bi-basket2-fill" type="button"></button>
+        </div>
+        <div *ngIf="isAdmin" class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button routerLink="/admin" class="btn btn-primary" type="button">Admin</button>
+        </div>
+        <form class="d-flex" role="search" *ngIf="router.url != '/login' && router.url != '/register' && router.url != '/home'">
+          <input  [(ngModel)]="keresoSzo" (keyup)="onKeyUp($event)" class="form-control me-2" type="search" placeholder="Search" name="search">
+          <button (click)="setKeresoSzo()" class="btn btn-outline-success" type="submit">Keresés</button>
+        </form>
+      </div>
+    </div>
+
+  <!-- <div *ngIf="!isBlack" [ngStyle]="{'background-color': isBlack ? 'black' : 'white', 'color': isBlack ? 'white' : 'black'}">
+    <button class="m-1" id="theme-switch" >
+      <i class="bi bi-moon-fill"></i>
+  </button>
+  </div> -->
+
+  <div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" ngbDropdownToggle role="button">
+            <i class="bi bi-sun-fill" *ngIf="isBlack"></i>
+            <i class="bi bi-moon-fill" *ngIf="!isBlack"></i>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu>
+            <li >
+              <a class="dropdown-item" *ngIf="isBlack" (click)="switch()">
+                <i class="bi bi-sun-fill"></i>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" *ngIf="!isBlack" (click)="switch()">
+                <i class="bi bi-moon-fill"></i>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  </nav>

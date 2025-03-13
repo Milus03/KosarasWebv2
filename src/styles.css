@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Világos mód */
+:root {
+    --background-color: white;
+    --text-color: black;
+  }
+
+  .dark-mode {
+    --background-color: #919191;
+    --text-color: white;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+#theme-switch {
+  background: white url('/kepek/mode-switch/lightmode.svg') no-repeat center center;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  #theme-switch {
+    background: black url('/kepek/mode-switch/darkmode.svg') no-repeat center center;
+    color: white;
+  }
+}

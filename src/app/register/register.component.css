@@ -1,0 +1,18 @@
+.form-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control {
+    width: 50%; 
+}
+
+p {
+    text-align: center;
+}
+
+button{
+    justify-self: center;
+    display: block;
+}

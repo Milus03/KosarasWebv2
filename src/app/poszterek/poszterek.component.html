@@ -1,0 +1,45 @@
+<button (click)="RendezesIranyValt()" type="button" class="btn btn-primary mb-4">{{rendezesTomb[rendezesAllapot]}}</button>
+
+<div class="container">
+    <div class="row">
+  
+      <div class="col-md-3">
+        <div class="filter-sidebar p-3 border rounded">
+          <h5>Szűrők</h5>
+  
+          <label for="meret">Méret:</label>
+          <select id="meret" class="form-control" [(ngModel)]="szurtMeret">
+            <option value="">Összes</option>
+            <option *ngFor="let meret of meretek" [value]="meret">{{ meret }}</option>
+          </select>
+        </div>
+      </div>
+  
+  
+      <div class="row">
+        <ng-container *ngIf="!szurtMeret">
+          <div class="col" *ngFor="let poszterek of (poszterek | search:keresoSzo | sort:rendezesAllapot)">
+            <div class="card" style="width: 18rem;">
+              <img [src]="poszterek.path" class="card-img-top" [alt]="poszterek.alt">
+              <div class="card-body">
+                <h5 class="card-title">{{poszterek.nev}}</h5>
+                <p class="card-text">Ár: {{poszterek.ar}} Ft</p>
+                <a routerLink="" class="btn btn-primary">Érdekel</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      
+        <ng-container *ngIf="szurtMeret">
+          <div class="col" *ngFor="let poszterek of szurtposzterek()">
+            <div class="card" style="width: 18rem;">
+              <img [src]="poszterek.path" class="card-img-top" [alt]="poszterek.alt">
+              <div class="card-body">
+                <h5 class="card-title">{{poszterek.nev}}</h5>
+                <p class="card-text">Ár: {{poszterek.ar}} Ft</p>
+                <a routerLink="" class="btn btn-primary">Érdekel</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
