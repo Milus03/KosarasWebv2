@@ -1,0 +1,43 @@
+<button (click)="RendezesIranyValt()" type="button" class="btn btn-primary mb-4">{{rendezesTomb[rendezesAllapot]}}</button>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="filter-sidebar p-3 border rounded">
+        <h5>Szűrők</h5>
+
+        <label for="meret">Méret:</label>
+        <select id="meret" class="form-control" [(ngModel)]="szurtMeret">
+          <option value="">Összes</option>
+          <option *ngFor="let meret of meretek" [value]="meret">{{ meret }}</option>
+        </select>
+
+        <label for="marka" class="mt-3">Márka:</label>
+        <select id="marka" class="form-control" [(ngModel)]="szurtMarka">
+          <option value="">Összes</option>
+          <option *ngFor="let marka of markak" [value]="marka">{{ marka }}</option>
+        </select>
+
+        <label for="szin" class="mt-3">Szín:</label>
+        <select id="szin" class="form-control" [(ngModel)]="szurtSzin">
+          <option value="">Összes</option>
+          <option *ngFor="let szin of szinek" [value]="szin">{{ szin }}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <!-- <ng-container *ngIf="!szurtMeret && !szurtMarka && !szurtSzin"> -->
+        <div class="col" *ngFor="let termekek termekek">
+          <div class="card" style="width: 18rem;">
+            <img [src]="termekek.path" class="card-img-top" [alt]="termekek.alt">
+            <div class="card-body">
+              <h5 class="card-title">{{termekek.nev}}</h5>
+              <p class="card-text">Ár: {{termekek.ar}} Ft</p>
+              <a routerLink="" class="btn btn-primary">Érdekel</a>
+            </div>
+          </div>
+        </div>
+      <!-- </ng-container> -->

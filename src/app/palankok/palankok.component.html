@@ -1,0 +1,51 @@
+<button (click)="RendezesIranyValt()" type="button" class="btn btn-primary mb-4">{{rendezesTomb[rendezesAllapot]}}</button>
+
+<div class="container">
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="filter-sidebar p-3 border rounded">
+          <h5>Szűrők</h5>
+
+          <label for="marka" class="mt-3">Márka:</label>
+          <select id="marka" class="form-control" [(ngModel)]="szurtMarka">
+            <option value="">Összes</option>
+            <option *ngFor="let marka of markak" [value]="marka">{{ marka }}</option>
+          </select>
+
+          <label for="anyag" class="mt-3">Anyag:</label>
+          <select id="anyag" class="form-control" [(ngModel)]="szurtAnyag">
+            <option value="">Összes</option>
+            <option *ngFor="let anyag of anyag" [value]="anyag">{{ anyag }}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <ng-container *ngIf="!szurtMarka && !szurtAnyag">
+          <div class="col" *ngFor="let palank of (palank | search:keresoSzo | sort:rendezesAllapot)">
+            <div class="card" style="width: 18rem;">
+              <img [src]="palank.path" class="card-img-top" [alt]="palank.alt">
+              <div class="card-body">
+                <h5 class="card-title">{{palank.nev}}</h5>
+                <p class="card-text">Ár: {{palank.ar}} Ft</p>
+                <a routerLink="" class="btn btn-primary">Érdekel</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="szurtMarka || szurtAnyag">
+          <div class="col" *ngFor="let palank of szurtPalank()">
+            <div class="card" style="width: 18rem;">
+              <img [src]="palank.path" class="card-img-top" [alt]="palank.alt">
+              <div class="card-body">
+                <h5 class="card-title">{{palank.nev}}</h5>
+                <p class="card-text">Ár: {{palank.ar}} Ft</p>
+                <a routerLink="" class="btn btn-primary">Érdekel</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>

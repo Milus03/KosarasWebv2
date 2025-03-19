@@ -1,0 +1,9 @@
+#basket{
+    margin-right: 2%;
+    transform: scale(1.5);
+}
+
+#theme-switch {
+    background: black url('/kepek/mode-switch/darkmode.svg') no-repeat center center;
+    color: white;
+}

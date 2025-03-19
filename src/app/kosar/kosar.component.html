@@ -1,0 +1,13 @@
+<div class="cart">
+    <h2 class="card-title">Kosár tartalma</h2>
+    <div class="cart-content">
+        <div class="cart-box" *ngFor="let item of cartItems">
+            <img [src]="item.path" alt="" class="cart-img">
+            <div class="cart-detail">
+                <h2 class="cart-product-title">{{ item.nev }}</h2>
+                <div class="cart-price">{{ item.ar }} Ft</div>
+                <button (click)="removeFromCart(item.id)">❌</button>
+            </div>
+        </div>
+    </div>
+</div>

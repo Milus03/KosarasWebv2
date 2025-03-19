@@ -1,0 +1,41 @@
+<div class="card" >
+  
+    <div class="card-body">
+      <h5 class="card-title">Sign Up</h5>
+  
+      <div class="form-floating mb-3">
+        <input type="email" [(ngModel)]="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+  
+      <div class="input-group mb-3">     
+        <div class="form-floating">
+          <input type="password" [(ngModel)]="password" class="form-control" id="pass1" placeholder="Username">
+          <label for="pass1">Password</label>
+        </div>
+        <span class="eye input-group-text"><i class="bi bi-eye"></i></span>
+      </div>
+  
+      <div class="input-group mb-3">     
+        <div class="form-floating">
+          <input type="password" [(ngModel)]="passwordAgain" class="form-control" id="pass2" placeholder="Username">
+          <label for="pass2">Password Confirm</label>
+        </div>
+        <span class="eye input-group-text"><i class="bi bi-eye"></i></span>
+      </div>
+  
+  
+      
+      <div class="form-floating my-3">
+        <button type="button" (click)="signUpMailPassword()"  class="btn btn-primary">Sign Up</button>
+      </div> 
+      <div *ngIf="emailPassError" class="alert alert-danger" role="alert">
+        Sign up error! {{emailPassMessage|json}}
+      </div>
+  
+      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+      <div class="form-floating">
+        <button (click)="googleAuth()" class="btn btn-primary">Contiune with Google</button>
+      </div> 
+    </div>
+  </div>

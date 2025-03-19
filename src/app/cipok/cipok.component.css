@@ -1,0 +1,12 @@
+img {
+    width: 280px;  
+    max-width: 280px;
+    height: auto;
+    max-height: 300px; 
+    object-fit: cover; 
+}
+
+.card{
+    align-items: center;
+    background-color: none;
+}
